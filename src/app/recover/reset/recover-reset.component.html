@@ -1,0 +1,22 @@
+<div *ngIf="busy">Working</div>
+
+<div class="login-wrapper">
+  <form [formGroup]="resetForm" (ngSubmit)="reset()" class="login" role="form">
+    <label class="title">
+      Reset your password
+    </label>
+    <p>Check your email <span *ngIf="email"><b>{{email}}</b></span> for an account confirmation code.</p>
+    <div class="login-group">
+      <div class="error active" *ngIf="error">
+        {{error}}
+      </div>
+      <input class="username" type="text" id="login_code" formControlName="code" placeholder="Confirmation code">
+      <input class="password" type="password" id="login_password" formControlName="password" placeholder="Password">
+      <a [routerLink]="['../confirm']">Don't have a code?</a>
+      <button type="submit" class="btn btn-primary" [disabled]="!resetForm.valid || busy">
+        NEXT
+        <span class="spinner spinner-inline" *ngIf="busy"></span>
+      </button>
+    </div>
+  </form>
+</div>

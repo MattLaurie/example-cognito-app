@@ -1,0 +1,22 @@
+<div *ngIf="busy">Working</div>
+
+<div class="login-wrapper">
+  <form [formGroup]="confirmForm" (ngSubmit)="confirm()" class="login" role="form">
+    <label class="title">
+      Recover your Astroshare Account
+    </label>
+    <p>Forgotten your password? Don't worry, it happens.</p>
+    <p>Enter your Astroshare account email below and we will send you instructions on how to set a new password.</p>
+    <div class="login-group">
+      <div class="error active" *ngIf="error">
+        {{error}}
+      </div>
+      <input class="username" type="email" id="login_username" formControlName="email" placeholder="Your email address">
+      <a [routerLink]="['/login']">Remembered your password?</a>
+      <button type="submit" class="btn btn-primary" [disabled]="!confirmForm.valid || busy">
+        NEXT
+        <span class="spinner spinner-inline" *ngIf="busy"></span>
+      </button>
+    </div>
+  </form>
+</div>

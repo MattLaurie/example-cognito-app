@@ -1,0 +1,19 @@
+<div class="login-wrapper">
+  <form [formGroup]="resendForm" (ngSubmit)="resend()" class="login" role="form">
+    <label class="title">
+      Resend confirmation code
+    </label>
+    <p>Need a new confirmation code? We can generate and send a new code to your email.</p>
+    <div class="login-group">
+      <div class="error active" *ngIf="error">
+        {{error}}
+      </div>
+      <input class="username" type="email" id="login_username" formControlName="email" placeholder="Your email address">
+      <a [routerLink]="['../confirm']">Already have a code?</a>
+      <button type="submit" class="btn btn-primary" [disabled]="!resendForm.valid || busy">
+        NEXT
+        <span class="spinner spinner-inline" *ngIf="busy"></span>
+      </button>
+    </div>
+  </form>
+</div>

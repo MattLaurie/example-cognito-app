@@ -1,0 +1,22 @@
+<div class="login-wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="login" role="form">
+    <label class="title">
+      Welcome to Astroshare
+    </label>
+    <p>Log in to manage your astro photos today.</p>
+    <div class="login-group">
+      <div class="error active" *ngIf="error">
+        {{error}}
+      </div>
+      <input class="username" type="email" id="login_username" formControlName="email" placeholder="Your email address">
+      <input class="password" type="password" id="login_password" formControlName="password" placeholder="Password">
+      <a [routerLink]="['/recover']">Forgotten your password?</a>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid || busy">
+        LOG IN
+        <span class="spinner spinner-inline" *ngIf="busy"></span>
+      </button>
+      <a [routerLink]="['/signup']" class="signup">Don't have an account?</a>
+    </div>
+  </form>
+</div>
